@@ -131,7 +131,14 @@ export const versionBumpCommand = new Command( 'version-bump' )
 				Logger.notice(
 					`The version has been bumped to ${ version } in the following files:`
 				);
-				Logger.warn( diff.files.map( ( f ) => f.file ).join( '\n' ) );
+				Logger.warn(
+					diff.files
+						.map(
+							( f ) =>
+								`${ f.file } (https://github.com/${ owner }/${ name }/blob/${ workingBranch }/${ f.file })`
+						)
+						.join( '\n' )
+				);
 				Logger.notice(
 					'Dry run complete. No pull was request created nor was a commit made.'
 				);

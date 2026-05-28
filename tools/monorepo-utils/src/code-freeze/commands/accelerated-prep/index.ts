@@ -124,7 +124,14 @@ export const acceleratedPrepCommand = new Command( 'accelerated-prep' )
 				Logger.notice(
 					`The prep has been completed in the following files:`
 				);
-				Logger.warn( diff.files.map( ( f ) => f.file ).join( '\n' ) );
+				Logger.warn(
+					diff.files
+						.map(
+							( f ) =>
+								`${ f.file } (https://github.com/${ owner }/${ name }/blob/${ workingBranch }/${ f.file })`
+						)
+						.join( '\n' )
+				);
 				Logger.notice(
 					'Dry run complete. No pull was request created nor was a commit made.'
 				);
